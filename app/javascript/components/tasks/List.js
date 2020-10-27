@@ -1,14 +1,39 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-class List extends React.Component {
-  render () {
+const List = ({ tasks }) => {
+  const displayTaskList = () => {
     return (
-      <React.Fragment>
-        <p>Task list will be appearing here soon!</p>
-      </React.Fragment>
-    );
+      <div>
+        <h1>Tasks List</h1>
+        <div className="p-1">
+          {tasks && tasks.length ? (
+            <ul className="list-group list-unstyled">
+              {tasks.map((task, index) => {
+                return (
+                  <li key={index}>
+                    Task id : {task.id}
+                    <br />
+                    Task description: {task.description}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <h3>No task has been created yet</h3>
+          )}
+        </div>
+      </div>
+    )
   }
-}
 
-export default List
+  return (
+    <div className="container">
+      <div className="pt-5">
+        {displayTaskList()}
+      </div>
+    </div>
+  );
+};
+
+export default List;
