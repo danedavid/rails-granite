@@ -1,7 +1,1 @@
-<h1>List of tasks will appear here</h1>
-<% @tasks.each do |task| %>
-  <p>
-    <%= task.id %>
-    <%= task.description %>
-  </p>
-<% end %>
+<%= react_component 'tasks/List' %>
