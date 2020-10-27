@@ -1,5 +1,4 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react';
 
 const List = ({ tasks }) => {
   const displayTaskList = () => {
@@ -27,13 +26,27 @@ const List = ({ tasks }) => {
     )
   }
 
+  const displayAddNewTaskButton = () => {
+    return (
+      <a className="btn btn-primary" href="/tasks/new">
+        Add New Task
+      </a>
+    )
+  };
+
+
   return (
     <div className="container">
-      <div className="pt-5">
-        {displayTaskList()}
+      <div className="row">
+        <div className="col-md-10">
+          {displayTaskList()}
+        </div>
+        <div className="col-md-2">
+          {displayAddNewTaskButton()}
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default List;
