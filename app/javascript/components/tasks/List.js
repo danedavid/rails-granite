@@ -1,4 +1,6 @@
 import React from 'react';
+import API from '../../utils/API';
+import * as Routes from '../../utils/Routes';
 
 const List = ({ tasks }) => {
   const displayTaskList = () => {
@@ -28,7 +30,7 @@ const List = ({ tasks }) => {
 
   const displayAddNewTaskButton = () => {
     return (
-      <a className="btn btn-primary" href="/tasks/new">
+      <a className="btn btn-primary" href={Routes.new_task_path()}>
         Add New Task
       </a>
     )

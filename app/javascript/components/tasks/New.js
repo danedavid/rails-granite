@@ -1,43 +1,38 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import API from '../../utils/API';
+import * as Routes from '../../utils/Routes';
+
 
 class New extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      description: ""
+      description: '',
     };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({
-      description: event.target.value
-    });
-  }
-
   onSubmit(event) {
     event.preventDefault();
-    const payload = { task: { description: this.state.description } };
-    fetch("/tasks", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "X-CSRF-TOKEN": document.querySelector('[name="csrf-token"]').content
-      },
-      body: JSON.stringify(payload)
-    })
-      .then(() => (window.location.href = "/tasks"))
-      .catch(function(err) {
+    API.postNewTask({ task: { description: this.state.description } })
+      .then(() => {
+        window.location.href = Routes.tasks_path();
+      })
+      .catch(error => {
         if (error.text) {
           error.text().then(err => {
             console.error(err);
           });
         }
       });
+  }
+
+  handleChange(event) {
+    this.setState({
+      description: event.target.value,
+    });
   }
 
   displayAddTaskForm() {
@@ -67,7 +62,7 @@ class New extends Component {
           </div>
         </form>
       </div>
-    );
+    )
   }
 
   render() {
