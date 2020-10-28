@@ -13,6 +13,9 @@ class Show extends Component {
           <div className="row">
             <div className="col-md-10">
               {task.id}{" "}{task.description}
+              <a className="ml-2 btn btn-sm btn-warning" href={Routes.edit_task_path(task.id)}>
+                Edit
+              </a>
             </div>
           </div>
         </div>
