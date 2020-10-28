@@ -13,9 +13,9 @@ const List = ({ tasks }) => {
               {tasks.map((task, index) => {
                 return (
                   <li key={index}>
-                    Task id : {task.id}
-                    <br />
-                    Task description: {task.description}
+                    <a href={Routes.task_path(task.id)}>
+                      {task.id}{" "}{task.description}
+                    </a>
                   </li>
                 );
               })}
