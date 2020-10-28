@@ -36,7 +36,7 @@ class New extends Component {
       .then((response) => {
         this.setState({ message: response.notice });
         setTimeout(() => {
-          window.location.href = Routes.tasks_path();
+          window.location.href = Routes.task_path(response.id);
         }, 1000);
       })
       .catch(error => {

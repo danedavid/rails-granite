@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      render status: :ok, json: { notice: "Task was succesfully created" }
+      render status: :ok, json: { notice: "Task was succesfully created", id: @task.id }
     else
       errors = @task.errors.full_messages
       render status: :unprocessable_entity, json: { errors: errors }
