@@ -13,3 +13,9 @@ export function task_path(id) {
 export function edit_task_path(id) {
   return `/tasks/${id}/edit`;
 }
+
+
+export function users_path() {
+  return "/users";
+}
+
