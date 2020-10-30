@@ -11,7 +11,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @user = User.find(task_params[:user_id])
+    @task = @user.tasks.new(task_params)
+    @task.creator_id = @current_user.id
+
     if @task.save
       render status: :ok, json: { notice: "Task was successfully created", id: @task.id }
     else

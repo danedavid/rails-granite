@@ -23,3 +23,11 @@ export function create_session_path() {
   return "/sessions";
 }
 
+export function login_path(){
+  return '/session/new';
+}
+
+export function logout_path(){
+  return '/logout';
+}
+

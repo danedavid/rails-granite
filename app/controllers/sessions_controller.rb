@@ -12,4 +12,12 @@ class SessionsController < ApplicationController
       render status: :not_found, json: { errors: ["Incorrect credentials, Try again."] }
     end
   end
+
+  def destroy
+    if session.delete(:user_id)
+      render status: :ok, json: { notice: "Succesfully logged out" }
+    else
+      render status: :unprocessable_entity, json: { errors: ["Logout failed"] }
+    end
+  end
 end
