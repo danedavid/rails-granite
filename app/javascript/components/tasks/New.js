@@ -42,6 +42,7 @@ class New extends Component {
         this.setState({ message: response.messages });
       },
       successCallBack: () => {
+        console.log('On success')
         window.location.href = Routes.tasks_path();
       }
     });

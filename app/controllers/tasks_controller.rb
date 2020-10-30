@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :load_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = policy_scope(Task)
   end
 
   def new
@@ -13,38 +13,42 @@ class TasksController < ApplicationController
   def create
     @user = User.find(task_params[:user_id])
     @task = @user.tasks.new(task_params)
+    authorize @task
     @task.creator_id = @current_user.id
 
-    if @task.save
+    if @task.valid?
+      @task.save
       render status: :ok, json: { notice: "Task was successfully created", id: @task.id }
     else
-      errors = @task.errors.full_messages
-      render status: :unprocessable_entity, json: { errors: errors }
+      render new
     end
   end
 
   def show
-    render
+    @task = Task.find(params[:id])
+    authorize @task
   end
 
   def edit
+    @task = Task.find(params[:id])
+    authorize @task
     render
   end
 
   def update
-    if @task.update(task_params)
-      render status: :ok, json: { notice: "Successfully updated task" }
-    else
-      render status: :unprocessable_entity, json: { errors: @task.errors.full_messages }
+    @task = Task.find(params[:id])
+    authorize @task
+
+    if @task.update_attributes(task_params)
+      redirect_to @task
     end
   end
 
   def destroy
-    if @task.destroy
-      render status: :ok, json: { notice: "Successfully deleted task" }
-    else
-      render status: :unprocessable_entity, json: { errors: @task.errors.full_messages }
-    end
+    @task = Task.find(params[:id])
+    authorize @task
+    @task.destroy
+    redirect_to tasks_url
   end
 
   private

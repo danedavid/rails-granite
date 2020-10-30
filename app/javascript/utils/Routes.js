@@ -24,7 +24,7 @@ export function create_session_path() {
 }
 
 export function login_path(){
-  return '/session/new';
+  return '/sessions/new';
 }
 
 export function logout_path(){
