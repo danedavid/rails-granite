@@ -31,3 +31,6 @@ export function logout_path(){
   return '/logout';
 }
 
+export function task_comments_path(task_id){
+  return `/tasks/${task_id}/comments`;
+}
