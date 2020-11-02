@@ -9,7 +9,7 @@ class New extends Component {
     this.state = {
       task: {
         description: '',
-        user_id: '',
+        user_id: this.props.users ? this.props.users[0].id : '',
         errors: null,
         message: null
       }
