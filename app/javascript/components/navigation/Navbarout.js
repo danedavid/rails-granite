@@ -32,7 +32,10 @@ class Navbarout extends React.Component {
     return (
       <div>
         <nav className="navbar navbar-dark bg-primary">
-          <a className="navbar-brand">
+          <a
+            className="navbar-brand"
+            href="/tasks"
+          >
             Granite
           </a>
           <div className="nav justify-content-end">

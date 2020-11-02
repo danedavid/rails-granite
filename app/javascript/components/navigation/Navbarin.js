@@ -11,6 +11,7 @@ class Navbarin extends React.Component {
       <div>
         <nav className="navbar navbar-dark bg-primary">
           <a
+            href="/tasks"
             className="navbar-brand">
             Granite
           </a>
