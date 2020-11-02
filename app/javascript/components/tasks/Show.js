@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as Routes from "./../../utils/Routes";
 import { fetchApi } from '../../utils/API';
 import Form from '../tasks/comment/Form';
+import Errors from '../shared/Errors';
 
 class Show extends Component {
 

@@ -41,7 +41,7 @@ class TasksController < ApplicationController
     authorize @task
 
     if @task.update_attributes(task_params)
-      redirect_to @task
+      render status: :ok
     end
   end
 
@@ -49,7 +49,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     authorize @task
     @task.destroy
-    redirect_to tasks_url
+    render status: :ok, json: { notice: "Successfully deleted" }
   end
 
   private

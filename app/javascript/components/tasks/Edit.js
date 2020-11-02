@@ -36,7 +36,6 @@ class Edit extends Component {
   };
 
   handleSubmit = e => {
-    e.preventDefault();
     fetchApi({
       url: Routes.task_path(this.props.task.id),
       method: 'PATCH',
@@ -68,7 +67,6 @@ class Edit extends Component {
   }
 
   displayNewTaskForm() {
-    console.log(this.props);
       const {users}=this.props;
       const { errors, message } = this.state;
     return (
@@ -80,7 +78,7 @@ class Edit extends Component {
           {message ? (
             <div className="alert alert-success">{message}</div>
           ) : (
-          <form onSubmit={this.handleSubmit }>
+          <form action={Routes.task_path(this.props.task.id)} onSubmit={this.handleSubmit}>
             <div className="form-group row pt-3">
               <label htmlFor="name" className="col-sm-2 col-form-label">
                 <h5 className="text-secondary ">Description: </h5>

@@ -29,6 +29,6 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:warning] = "All accessable tasks are listed below"
-    redirect_to root_path
+    render status: :unauthorized, json: { errors: "Unauthorized" }
   end
 end
