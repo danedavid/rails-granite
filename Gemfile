@@ -62,3 +62,5 @@ gem 'bcrypt', '~> 3.1.13'
 gem 'pundit'
 
 gem 'bundle-audit'
+
+gem 'sidekiq'
