@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
   mount Sidekiq::Web, at: '/sidekiq'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root :to => redirect('/tasks')
+
   resources :tasks
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create]
